@@ -10,8 +10,8 @@ import spock.lang.Unroll
 class OperationConfigurationSpec extends Specification {
     @Subject
     OperationConfiguration configuration = OperationConfiguration.of(
-            new Operation('+'),
-            new Operation('-')
+            Operation.builder().symbol('+').build(),
+            Operation.builder().symbol('-').build()
     )
 
     void "it should be possible to find configured '#operation' operation"() {

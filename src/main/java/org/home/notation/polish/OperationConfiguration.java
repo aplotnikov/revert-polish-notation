@@ -16,7 +16,7 @@ public class OperationConfiguration {
 
     public Item find(String operation) {
         return operations.computeIfAbsent(operation, name -> {
-            throw new IllegalArgumentException("The operation 'my operation' was not configured. Please, check configuration.");
+            throw new IllegalArgumentException("The operation \'" + operation + "\' was not configured. Please, check configuration.");
         });
     }
 

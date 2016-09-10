@@ -9,7 +9,7 @@ import spock.lang.Unroll
 class NumberSpec extends Specification {
     void "UnsupportedOperationException should be thrown when an user tries to call 'applyFunction' method and value is #value"() {
         given:
-        Number number = Number.of(value)
+        Number number = Number.of(value as double)
 
         when:
         number.applyFunction(ONE, ONE)
@@ -20,17 +20,6 @@ class NumberSpec extends Specification {
         exception.message == 'The item does not support this operation.'
 
         where:
-        value << ['1', '1.1']
-    }
-
-    void "NumberFormatException should be thrown when input value (#value) has incorrect format"() {
-        when:
-        Number.of(value)
-
-        then:
-        thrown(NumberFormatException)
-
-        where:
-        value << ['q', '!', '#']
+        value << [1, 1.1]
     }
 }

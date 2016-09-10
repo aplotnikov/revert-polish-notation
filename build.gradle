@@ -11,6 +11,15 @@ jar {
     version = '0.0.1-SNAPSHOT'
 }
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.10'
+    }
+}
+
 apply plugin: 'groovy'
 apply from: 'gradle/static-code-analyze.gradle'
 

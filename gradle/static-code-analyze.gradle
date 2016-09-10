@@ -1,10 +1,11 @@
-apply plugin: 'pmd'
-apply plugin: 'codenarc'
-apply plugin: 'jacoco'
-
 ext {
     reportDirectory = "$project.buildDir/reports/"
 }
+
+apply plugin: 'pmd'
+apply plugin: 'codenarc'
+apply plugin: 'jacoco'
+apply plugin: 'info.solidsoft.pitest'
 
 pmd {
     toolVersion = '5.5.1'
@@ -42,4 +43,9 @@ jacocoTestReport {
         csv.enabled true
         html.destination "$reportDirectory/jacoco"
     }
+}
+
+pitest {
+    targetClasses = ['org.home.notation.polish.*']
+    threads = 4
 }

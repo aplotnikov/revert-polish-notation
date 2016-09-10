@@ -9,10 +9,8 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class Calculator {
-    private final Deque<BigDecimal> numbers = new ArrayDeque<>();
-
     public BigDecimal calculate(Notation notation) {
-        numbers.clear();
+        Deque<BigDecimal> numbers = new ArrayDeque<>();
 
         while (notation.hasNext()) {
             Item item = notation.next();

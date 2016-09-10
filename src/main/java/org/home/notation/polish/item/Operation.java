@@ -20,8 +20,7 @@ public class Operation implements Item {
     private final String symbol;
     private final BiFunction<BigDecimal, BigDecimal, BigDecimal> function;
 
-    @Override
-    public BigDecimal applyFunction(BigDecimal firstItem, BigDecimal secondItem) {
-        return function.apply(firstItem, secondItem);
+    public BigDecimal applyFunction(BigDecimal firstNumber, BigDecimal secondNumber) {
+        return function.apply(firstNumber, secondNumber);
     }
 }

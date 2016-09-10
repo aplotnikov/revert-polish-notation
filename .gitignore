@@ -31,6 +31,8 @@ target/
 gradle-app.setting
 !gradle-wrapper.jar
 !gradle-wrapper.properties
+!codeharc.groovy
+!static-code-analyze.gradle
 
 # IntelliJ project files
 #########################

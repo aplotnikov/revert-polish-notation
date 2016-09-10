@@ -12,6 +12,7 @@ jar {
 }
 
 apply plugin: 'groovy'
+apply from: 'gradle/static-code-analyze.gradle'
 
 repositories {
     mavenCentral()

@@ -19,7 +19,7 @@ public class Calculator {
 
             if (item instanceof Number) {
                 numbers.addFirst(((Number) item).getValue());
-            } else if (item instanceof Operation) {
+            } else {
                 Operation operation = (Operation) item;
 
                 BigDecimal secondNumber = numbers.removeFirst();

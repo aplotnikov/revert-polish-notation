@@ -5,49 +5,53 @@ import org.home.notation.polish.item.Number
 import org.home.notation.polish.item.Operation
 import spock.lang.Shared
 import spock.lang.Specification
+import spock.lang.Unroll
 
+@Unroll
 class NotationSpec extends Specification {
     @Shared
     OperationConfiguration operationConfiguration = OperationConfiguration.of(
             Operation.builder().symbol('+').build()
     )
 
-    void "notation should return next number item"() {
+    void "NullPointerException should be thrown when operation configuration is null"() {
         when:
-        Notation notation = Notation.of('1', ' ', operationConfiguration)
+        Notation.of('1', ' ', null)
 
         then:
-        notation.hasNext()
+        thrown(NullPointerException)
+    }
+
+    void "notation should have two items when splitter is '#splitter'"() {
+        given:
+        Notation notation = Notation.of(notationText, splitter, operationConfiguration)
 
         when:
-        Item nextItem = notation.next()
+        Item firstItem = notation.next()
 
         then:
-        with(nextItem) {
+        with(firstItem) {
             it instanceof Number
             value == 1
         }
         and:
-        !notation.hasNext()
-    }
-
-    void "notation should return next operation item"() {
-        when:
-        Notation notation = Notation.of('+', ' ', operationConfiguration)
-
-        then:
         notation.hasNext()
 
         when:
-        Item nextItem = notation.next()
+        Item secondItem = notation.next()
 
         then:
-        with(nextItem) {
+        with(secondItem) {
             it instanceof Operation
             symbol == '+'
         }
         and:
         !notation.hasNext()
+
+        where:
+        notationText | splitter
+        '1 +'        | ' '
+        '1,+'        | ','
     }
 
     void "notation should throw IllegalStateException when it has no items"() {

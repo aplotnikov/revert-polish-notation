@@ -1,16 +1,12 @@
 package org.home.notation.polish.item;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Value;
 
 import java.math.BigDecimal;
 
 @AllArgsConstructor
-@Getter
-@ToString
-@EqualsAndHashCode
+@Value
 public class Number implements Item {
     private final BigDecimal value;
 
